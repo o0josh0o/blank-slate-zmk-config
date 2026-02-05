@@ -5,6 +5,8 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
     macros {
@@ -53,22 +55,6 @@
             tapping-term-ms = <200>;
             bindings = <&kp MINUS>, <&kp EQUAL>;
         };
-
-        ht_qt_del: hold_tap_quote_delete {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
-
-        ht_vol: hold_tap_volume {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
     };
 
     combos {
@@ -85,9 +71,8 @@
 
         default_layer {
             bindings = <
-                /* REPLACED: Simple Backspace */
                 &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BSPC
-                &kp TAB &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &mt RIGHT_GUI SEMICOLON &ht_qt_del DELETE SQT
+                &kp TAB &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &mt RIGHT_GUI SEMICOLON &mt DEL SQT
                 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH &mt RIGHT_SHIFT ENTER
                 &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &trans &tog 1 &kp SPACE &none &tog 2 &kp LEFT &kp DOWN &kp UP &kp RIGHT
             >;
@@ -96,7 +81,7 @@
         lower_layer {
             bindings = <
                 &kp ESCAPE &kp EXCL &kp AT &kp LBRC &kp RBRC &kp PIPE &kp C_VOLUME_UP &kp N7 &kp N8 &kp N9 &kp KP_ASTERISK &trans
-                &trans &kp HASH &kp DLLR &kp LPAR &kp RPAR &kp BACKSLASH &ht_vol C_MUTE C_VOL_DN &kp N4 &kp N5 &kp N6 &kp KP_PLUS &trans
+                &trans &kp HASH &kp DLLR &kp LPAR &kp RPAR &kp BACKSLASH &mt C_MUTE C_VOL_DN &kp N4 &kp N5 &kp N6 &kp KP_PLUS &trans
                 &trans &kp COMMA &kp CARET &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp TILDE &kp AMPS &kp N1 &kp N2 &kp N3 &kp KP_SLASH &trans
                 &trans &trans &trans &kp PRCNT &trans &trans &none &kp N0 &kp KP_DOT &kp KP_EQUAL &td1 &trans
             >;
