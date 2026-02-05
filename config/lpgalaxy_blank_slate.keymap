@@ -54,17 +54,7 @@
             bindings = <&kp MINUS>, <&kp EQUAL>;
         };
 
-        /* 
-           FIXED: Hardcoded bindings to avoid parenthesis parsing error in keymap.
-           Tap = BSPC, Hold = LC(BSPC)
-        */
-        ht_bspc: hold_tap_bspc {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp LC(BSPC)>, <&kp BSPC>;
-        };
+        /* Removed broken ht_bspc. Using standard &mt instead. */
 
         ht_qt_del: hold_tap_quote_delete {
             compatible = "zmk,behavior-hold-tap";
@@ -97,8 +87,8 @@
 
         default_layer {
             bindings = <
-                /* Fixed: using &ht_bspc with no arguments */
-                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &ht_bspc
+                /* CHANGED: &mt RCTRL BSPC (Tap=BSPC, Hold=Right Ctrl) */
+                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &mt RCTRL BSPC
                 &kp TAB &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &mt RIGHT_GUI SEMICOLON &ht_qt_del DELETE SQT
                 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH &mt RIGHT_SHIFT ENTER
                 &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &trans &tog 1 &kp SPACE &none &tog 2 &kp LEFT &kp DOWN &kp UP &kp RIGHT
