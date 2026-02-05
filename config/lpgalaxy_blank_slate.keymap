@@ -8,7 +8,6 @@
 
 / {
     macros {
-        /* Originally ST_MACRO_0: Ctrl+I, I, D, Ctrl+I, . */
         macro_0: macro_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -27,7 +26,6 @@
                 , <&macro_wait_time 100>
                 , <&macro_tap &kp DOT>;
         };
-        /* Originally ST_MACRO_1: Ctrl+', Ctrl+' */
         macro_1: macro_1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -43,14 +41,12 @@
     };
 
     behaviors {
-        /* TD(DANCE_0): Tap for ESC, Hold for TAB */
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp ESC>, <&kp TAB>;
         };
-        /* TD(DANCE_1): Tap for -, Double tap for = */
         td1: tap_dance_1 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -58,16 +54,18 @@
             bindings = <&kp MINUS>, <&kp EQUAL>;
         };
 
-        /* Custom behavior for Top Right key: Tap = BSPC, Hold = Ctrl+BSPC */
+        /* 
+           FIXED: Hardcoded bindings to avoid parenthesis parsing error in keymap.
+           Tap = BSPC, Hold = LC(BSPC)
+        */
         ht_bspc: hold_tap_bspc {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp LC(BSPC)>, <&kp BSPC>;
         };
 
-        /* Custom behavior for Rightmost Row 1: Tap = Quote (SQT), Hold = Delete (DEL) */
         ht_qt_del: hold_tap_quote_delete {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -76,7 +74,6 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* Custom behavior for Middle Row 1: Tap = VolDown, Hold = Mute */
         ht_vol: hold_tap_volume {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -88,7 +85,6 @@
 
     combos {
         compatible = "zmk,combos";
-        /* Studio Unlock: ESC (0) + BSPC (11) */
         combo_studio_unlock {
             timeout-ms = <50>;
             key-positions = <0 11>;
@@ -101,8 +97,8 @@
 
         default_layer {
             bindings = <
-                /* Top Right: Tap=BSPC, Hold=Ctrl+BSPC using new custom behavior */
-                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &ht_bspc LC(BSPC) BSPC
+                /* Fixed: using &ht_bspc with no arguments */
+                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &ht_bspc
                 &kp TAB &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &mt RIGHT_GUI SEMICOLON &ht_qt_del DELETE SQT
                 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH &mt RIGHT_SHIFT ENTER
                 &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &trans &tog 1 &kp SPACE &none &tog 2 &kp LEFT &kp DOWN &kp UP &kp RIGHT
