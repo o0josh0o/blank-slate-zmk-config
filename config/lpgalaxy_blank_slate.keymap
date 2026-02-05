@@ -5,8 +5,6 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
 
 / {
     macros {
@@ -98,9 +96,9 @@
 
         adjust_layer {
             bindings = <
-                &trans &trans &kp LC(W) &kp LC(LSFT(E)) &trans &kp LA(LC(T)) &trans &kp LC(LSFT(W)) &macro_0 &kp LA(LC(O)) &kp LC(LSFT(P)) &trans
-                &kp DEL &kp LC(LSFT(A)) &kp LC(LSFT(S)) &kp LA(LC(D)) &kp LA(LC(F)) &trans &kp LA(LC(H)) &trans &trans &kp LC(LSFT(L)) &trans &trans
-                &trans &trans &kp LA(LC(X)) &trans &kp LC(LSFT(V)) &kp LC(LSFT(F5)) &kp LC(LSFT(N)) &trans &trans &kp LC(LSFT(DOT)) &trans &macro_1
+                &trans &trans &kp LC(W) &trans &trans &trans &trans &trans &macro_0 &trans &trans &trans
+                &kp DEL &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &macro_1
                 &trans &trans &trans &trans &trans &trans &none &trans &kp HOME &kp PG_DN &kp PG_UP &kp END
             >;
         };
