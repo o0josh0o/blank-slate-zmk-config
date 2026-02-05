@@ -43,7 +43,7 @@
     };
 
     behaviors {
-        /* TD(DANCE_0): Tap for ESC, Hold for TAB logic via Tap Dance */
+        /* TD(DANCE_0): Tap for ESC, Hold for TAB */
         td0: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -58,10 +58,16 @@
             bindings = <&kp MINUS>, <&kp EQUAL>;
         };
 
-        /* 
-           DUAL_FUNC_1 Replacement: Tap = Quote (SQT), Hold = Delete (DEL) 
-           Custom hold-tap required because DEL is not a modifier.
-        */
+        /* Custom behavior for Top Right key: Tap = BSPC, Hold = Ctrl+BSPC */
+        ht_bspc: hold_tap_bspc {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
+
+        /* Custom behavior for Rightmost Row 1: Tap = Quote (SQT), Hold = Delete (DEL) */
         ht_qt_del: hold_tap_quote_delete {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -70,9 +76,7 @@
             bindings = <&kp>, <&kp>;
         };
 
-        /* 
-           DUAL_FUNC_2 Replacement: Tap = VolDown, Hold = Mute 
-        */
+        /* Custom behavior for Middle Row 1: Tap = VolDown, Hold = Mute */
         ht_vol: hold_tap_volume {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -84,11 +88,7 @@
 
     combos {
         compatible = "zmk,combos";
-        /* 
-           ZMK Studio Unlock Combo 
-           Trigger: Top Left (Key 0) + Top Right (Key 11) 
-           (ESC + Backspace positions)
-        */
+        /* Studio Unlock: ESC (0) + BSPC (11) */
         combo_studio_unlock {
             timeout-ms = <50>;
             key-positions = <0 11>;
@@ -101,9 +101,8 @@
 
         default_layer {
             bindings = <
-                /* DUAL_FUNC_0 (Top Right) was Tap: BSPC, Hold: Ctrl+BSPC. Used &mt behavior. */
-                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &mt LC(BSPC) BSPC
-                /* DUAL_FUNC_1 (Rightmost, Row 1) uses custom ht_qt_del behavior */
+                /* Top Right: Tap=BSPC, Hold=Ctrl+BSPC using new custom behavior */
+                &td0 &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &ht_bspc LC(BSPC) BSPC
                 &kp TAB &kp A &kp S &kp D &kp F &kp G &kp H &kp J &kp K &kp L &mt RIGHT_GUI SEMICOLON &ht_qt_del DELETE SQT
                 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH &mt RIGHT_SHIFT ENTER
                 &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &trans &tog 1 &kp SPACE &none &tog 2 &kp LEFT &kp DOWN &kp UP &kp RIGHT
@@ -112,7 +111,6 @@
 
         lower_layer {
             bindings = <
-                /* DUAL_FUNC_2 (Middle, Row 1) uses custom ht_vol behavior */
                 &kp ESCAPE &kp EXCL &kp AT &kp LBRC &kp RBRC &kp PIPE &kp C_VOLUME_UP &kp N7 &kp N8 &kp N9 &kp KP_ASTERISK &trans
                 &trans &kp HASH &kp DLLR &kp LPAR &kp RPAR &kp BACKSLASH &ht_vol C_MUTE C_VOL_DN &kp N4 &kp N5 &kp N6 &kp KP_PLUS &trans
                 &trans &kp COMMA &kp CARET &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp TILDE &kp AMPS &kp N1 &kp N2 &kp N3 &kp KP_SLASH &trans
