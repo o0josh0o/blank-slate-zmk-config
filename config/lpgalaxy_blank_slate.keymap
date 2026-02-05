@@ -38,6 +38,120 @@
                 , <&macro_tap &kp SQT>
                 , <&macro_release &kp LCTRL>;
         };
+
+        // Layer 3 (Adjust) Macros - VS Code shortcuts
+        m_ctrl_shift_e: m_ctrl_shift_e {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp E>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_alt_ctrl_t: m_alt_ctrl_t {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp T>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_ctrl_shift_w: m_ctrl_shift_w {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp W>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_alt_ctrl_o: m_alt_ctrl_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp O>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_ctrl_shift_p: m_ctrl_shift_p {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp P>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_ctrl_shift_a: m_ctrl_shift_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp A>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_ctrl_shift_s: m_ctrl_shift_s {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp S>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_alt_ctrl_d: m_alt_ctrl_d {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp D>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_alt_ctrl_f: m_alt_ctrl_f {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp F>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_alt_ctrl_h: m_alt_ctrl_h {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp H>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_ctrl_shift_l: m_ctrl_shift_l {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp L>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_alt_ctrl_x: m_alt_ctrl_x {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LALT &kp LCTRL>
+                     , <&macro_tap &kp X>
+                     , <&macro_release &kp LALT &kp LCTRL>;
+        };
+        m_ctrl_shift_v: m_ctrl_shift_v {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp V>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_ctrl_shift_f5: m_ctrl_shift_f5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp F5>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_ctrl_shift_n: m_ctrl_shift_n {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp N>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
+        m_ctrl_shift_dot: m_ctrl_shift_dot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL &kp LSHIFT>
+                     , <&macro_tap &kp DOT>
+                     , <&macro_release &kp LCTRL &kp LSHIFT>;
+        };
     };
 
     behaviors {
@@ -96,9 +210,9 @@
 
         adjust_layer {
             bindings = <
-                &trans &trans &kp LC(W) &trans &trans &trans &trans &trans &macro_0 &trans &trans &trans
-                &kp DEL &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &macro_1
+                &trans &trans &kp LC(W) &m_ctrl_shift_e &trans &m_alt_ctrl_t &trans &m_ctrl_shift_w &macro_0 &m_alt_ctrl_o &m_ctrl_shift_p &trans
+                &kp DEL &m_ctrl_shift_a &m_ctrl_shift_s &m_alt_ctrl_d &m_alt_ctrl_f &trans &m_alt_ctrl_h &trans &trans &m_ctrl_shift_l &trans &trans
+                &trans &trans &m_alt_ctrl_x &trans &m_ctrl_shift_v &m_ctrl_shift_f5 &m_ctrl_shift_n &trans &trans &m_ctrl_shift_dot &trans &macro_1
                 &trans &trans &trans &trans &trans &trans &none &trans &kp HOME &kp PG_DN &kp PG_UP &kp END
             >;
         };
