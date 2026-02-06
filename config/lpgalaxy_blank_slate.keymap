@@ -167,20 +167,14 @@
             tapping-term-ms = <200>;
             bindings = <&kp MINUS>, <&kp EQUAL>;
         };
-
-        /* 
-         * Improved hold-tap with better timing to prevent accidental mod triggers
-         * - balanced flavor: waits to see next key before deciding tap vs hold
-         * - quick-tap-ms: allows rapid repeated taps without triggering hold
-         * - require-prior-idle-ms: requires pause before hold activates (prevents fast typing issues)
-         */
+    
         ht_balanced: hold_tap_balanced {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;           // ← Change this to 300
+            quick-tap-ms = <175>;              // ← Change this to 200
+            require-prior-idle-ms = <150>;     // ← Change this to 125
             bindings = <&kp>, <&kp>;
         };
     };
